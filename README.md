@@ -29,7 +29,7 @@ Start the server:
 
 ```bash
 cd backend
-python main.py                    # http://localhost:8000  — check /api/health
+python main.py                    
 ```
 
 **2. Frontend** — in a second terminal:
