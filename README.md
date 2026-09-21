@@ -47,8 +47,7 @@ Open http://localhost:5173, click **Click to record**, describe a problem, then 
 Cascade, not Gemini Live:
 
 - **Speech-to-text:** browser Web Speech API
-- **LLM:** `gemini-3.6-flash` via the `google-genai` SDK, with a JSON response schema. Falls back to `gemini-3.8-flash` if overloaded or rate-limited.
-- **Text-to-speech:** browser `speechSynthesis`
+- **LLM:** `gemini-3.6-flash` via the `google-genai` SDK, with a JSON response schema. 
 
 I chose the cascade because each stage is simple and replaceable, and it fit the time budget. Gemini Live (`gemini-3.8-live`) would be the next step.
 
