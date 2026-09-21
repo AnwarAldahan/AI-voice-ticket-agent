@@ -1,0 +1,97 @@
+:root {
+  --bg: #f6f7f4;
+  --panel: #ffffff;
+  --ink: #1f2a24;
+  --muted: #6b766f;
+  --line: #d9ded9;
+  --accent: #1f6f5c;
+  --accent-soft: #e3f1ec;
+  --warn: #b5541a;
+  --warn-soft: #fbeee4;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+h1, h2 { margin: 0; font-weight: 600; }
+h1 { font-size: 1.25rem; }
+h2 { font-size: 0.95rem; color: var(--muted); margin-bottom: 0.75rem; }
+
+.app { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
+
+.top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+.controls { display: flex; gap: 1rem; align-items: center; font-size: 0.9rem; }
+.toggle { display: flex; gap: 0.4rem; align-items: center; color: var(--muted); }
+
+.panels { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.25rem; }
+@media (max-width: 760px) { .panels { grid-template-columns: 1fr; } }
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.25rem;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* conversation */
+.turns { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+.turn { margin: 0; padding: 0.6rem 0.85rem; border-radius: 8px; max-width: 85%; line-height: 1.4; }
+.turn.user { align-self: flex-end; background: var(--accent-soft); }
+.turn.agent { align-self: flex-start; background: var(--bg); }
+.turn.interim { opacity: 0.55; font-style: italic; }
+.turn.thinking { color: var(--muted); }
+.hint { color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+
+.talk {
+  width: 100%;
+  padding: 1rem;
+  font: inherit;
+  font-weight: 500;
+  border: 2px solid var(--accent);
+  background: var(--panel);
+  color: var(--accent);
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  touch-action: none;
+}
+.talk.on { background: var(--accent); color: #fff; }
+.talk:disabled { opacity: 0.5; cursor: default; }
+.talk:focus-visible { outline: 3px solid var(--accent-soft); }
+
+.ghost {
+  font: inherit; padding: 0.4rem 0.8rem; border-radius: 8px;
+  border: 1px solid var(--line); background: transparent; cursor: pointer;
+}
+
+/* ticket */
+.category { font-weight: 600; margin: 0 0 0.75rem; }
+.fields { margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.fields > div { display: grid; grid-template-columns: 120px 1fr; gap: 0.5rem; padding: 0.5rem 0.75rem; border-radius: 8px; }
+.fields .filled { background: var(--accent-soft); }
+.fields .missing { background: var(--warn-soft); color: var(--warn); }
+.fields dt { color: var(--muted); font-size: 0.9rem; }
+.fields .missing dt { color: var(--warn); }
+.fields dd { margin: 0; }
+
+.status { margin: 1rem 0 0; color: var(--warn); font-size: 0.9rem; }
+.status.done { color: var(--accent); font-weight: 600; }
+
+.json {
+  margin: 0.75rem 0 0;
+  padding: 0.85rem;
+  background: var(--ink);
+  color: #e6efe9;
+  border-radius: 8px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+  overflow-x: auto;
+}
+
+.error { color: var(--warn); background: var(--warn-soft); padding: 0.6rem 0.85rem; border-radius: 8px; font-size: 0.9rem; }
+.error .ghost { margin-left: 0.75rem; }
